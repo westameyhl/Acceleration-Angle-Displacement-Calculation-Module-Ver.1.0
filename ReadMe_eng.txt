@@ -36,30 +36,3 @@ Raw Dataset (data)
 Contains various data files
 
 
-Main function adjustment
-=====================================
-InPuT.select_pxy(scen = a, row = b)
-a,b: select raw data
-
-InPuT.auto_modifier(a,b)
-a: connection type (support:  "mesh", "load_stc", "continuous", "hinge",  "db_hinge","plastic_hinge")
-            "mesh": just division point (equivalent integration, antiderivative, differencial 1/2 )
-            "load_stc": external force (equivalent integration, antiderivative, differencial 1 )
-            "continuous": countinuous beam support (equivalent integration, differencial 1 )
-            "hinge": self._hinge_node (equivalent integration, differencial 2 )
-            "db_hinge": self._dbhinge_node (antiderivative, differencial 1 )
-            "plastic_hinge": self._pthinge_node (equivalent integration, differencial 1/2 )
-b: location
-
-nums = [a,b,...]
-a,b: select data for validation
-
-PMKkt.purge(adj = a)
-a: describe how to determin the power of polynomial
-            "auto": autometically determine
-            "custom": call function settings/custom_power.py,  return power
-            "loop": add setting "power = number", set all segment the same power
-            "max": set the maximum power supported in the model (making matrix nonsingular)
-
-MatrixGen.xbdic()
-"Tikhonov=a": set 'a' as coefficient of Tikhonov regularization
